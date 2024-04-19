@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #008000 #1d1e22;
+  scrollbar-gutter: stable both-edges;
+}
+
+body {
+  background-color: #1d1e22;
+}
+
+.sidebar {
+  text-align: center;
+  position: fixed;
+  display: auto;
+  width: 100%;
+  background-color: #1d1e22;
+  top: 0;
+  margin: 0;
+  padding: 20px 0;
+  z-index: 9999;
+  font-family: "Montserrat", sans-serif;
+  -webkit-box-shadow: 0 0 5px 0 rgba(29, 30, 34);
+  box-shadow: 0 0 5px 2px rgba(29, 30, 34);
+
+  h1 {
+    font-size: 40px; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Se desejar */
+    background: linear-gradient(to right, #4bf3ff, #ffee00);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+  }
+
+  h1::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000; /* Cor do texto para criar a sombra */
+    z-index: -1;
+    overflow: hidden;
+    animation: mix-colors 5s infinite linear; /* Animação para misturar as cores */
+  }
+
+  @keyframes h1 {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  p {
+    font-size: 15px; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Se desejar */
+    background: linear-gradient(to right, #ccf9fc, #fffab8);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+    left: 18px;
+  }
+
+  p::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000; /* Cor do texto para criar a sombra */
+    z-index: -1;
+    overflow: hidden;
+    animation: mix-colors 5s infinite linear; /* Animação para misturar as cores */
+  }
+
+  @keyframes p {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.categories {
+  margin: 120px auto;
+  display: table;
+  text-align: center;
+
+  button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 130px;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    background-color: #eee;
+    margin: 0 3px;
+  }
+
+  button:hover {
+    background-color: #ccc;
+    color: #fff;
+  }
+
+  .button.is-checked {
+    background: #008000;
+    color: #fff;
+  }
+}
+
+.image-gallery {
+  z-index: 9990;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+
+  #imagem {
+    filter: brightness(0.8);
+  }
+
+  #imagem:hover {
+    filter: brightness(1);
+  }
+
+  .image-card {
+    display: inline-block;
+    width: 31%;
+    margin: 1.5% 0 0 1.5%;
+    padding-top: 21%;
+    border-radius: 10px;
+    background-color: #fff;
+    position: relative;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.7s ease;
+    filter: blur(0.1);
+
+    .no-event {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .title {
+      position: absolute;
+      width: 60%;
+      font-size: 16px;
+      background-color: #1d1e22;
+      padding: 6px;
+      padding-left: 10px;
+      padding-right: 7px;
+      top: 12px;
+      color: white; /* Cor do texto */
+      text-shadow: 1px 1px 2px #000;
+      transform: translateZ(10px);
+      border-radius: 0 10px 10px 0;
+
+      .icon {
+        text-align: right;
+        color: gold;
+      }
+    }
+  }
+
+  .image-card:hover {
+    transform: scale(1.05);
+    border: solid 2px #008000;
+    border-radius: 6px;
+  }
+}
+
+.both {
+  clear: both;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    font-family: "Montserrat", sans-serif;
+    h1 {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    p {
+      left: 0;
+      top: 5px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+  }
+
+  .image-gallery {
+    width: 90%;
+    margin: 5% auto; /* Margens para centralizar a imagem */
+
+    #imagem {
+      filter: brightness(1);
+    }
+
+    .image-card {
+      display: block;
+      width: 100%;
+      height: 170px; /* Altura automática para manter a proporção da imagem */
+      max-width: 400px; /* Largura máxima para evitar que a imagem fique muito grande */
+      margin: 5px auto; /* Margens para centralizar a imagem */
+      margin-bottom: 30px;
+      clear: both; /* Garante que as imagens fiquem uma abaixo da outra */
+
+      .no-event {
+        text-align: center;
+      }
+    }
+  }
+
+  .categories {
+    width: 100%;
+    text-align: center;
+
+    button {
+      width: calc(40% - 75px); /* Definindo o tamanho dos botões */
+      display: inline;
+      margin: 5px;
+    }
+  }
+}
